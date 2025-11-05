@@ -1,7 +1,14 @@
 import Project from "./Project.jsx";
 import React from "react";
 import { motion } from "framer-motion";
-import { FaPython, FaReact, FaCss3, FaHtml5, FaFlask, FaSass } from "react-icons/fa";
+import {
+  FaPython,
+  FaReact,
+  FaCss3,
+  FaHtml5,
+  FaFlask,
+  FaSass,
+} from "react-icons/fa";
 import CosmoAI from "../assets/cosmo-chat.png";
 import ReactMovieApp from "../assets/react-movie-app.png";
 import ReactQuizApp from "../assets/react-quiz-app.png";
@@ -117,28 +124,31 @@ const project_data = [
 
 function Projects() {
   return (
-    <div className="project-list">
-      {project_data.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="project-list__motion"
-        >
-          <Project
+    <>
+      <div className="project-list">
+        <h2 className="project-list__title">My projects</h2>
+        {project_data.map((project, index) => (
+          <motion.div
             key={index}
-            title={project.title}
-            image={project.image}
-            link={project.link}
-            technologies={project.technologies}
-            description={project.description}
-            date={project.date}
-          />
-        </motion.div>
-      ))}
-    </div>
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="project-list__motion"
+          >
+            <Project
+              key={index}
+              title={project.title}
+              image={project.image}
+              link={project.link}
+              technologies={project.technologies}
+              description={project.description}
+              date={project.date}
+            />
+          </motion.div>
+        ))}
+      </div>
+    </>
   );
 }
 

@@ -38,6 +38,7 @@ const timelineData = [
 function TimeLine() {
   return (
     <div className="timeline">
+      <h2>My Timeline</h2>
       {timelineData.map((item, index) => (
         <motion.div
           key={index}

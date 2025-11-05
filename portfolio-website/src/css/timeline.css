@@ -4,7 +4,8 @@
     max-width: 1024px;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 100px;
+    
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .timeline__timeline-item{
