@@ -10,6 +10,7 @@ import EasyArticle from "../assets/easy-article.png";
 import SpaceGame from "../assets/space-game.png";
 import ReactPlanetApp from "../assets/planet-explorer.png"
 import youtube from "../assets/youtube.png"
+import blog from "../assets/blog.png"
 import "../css/projects.css";
 
 const project_data = [
@@ -38,6 +39,19 @@ const project_data = [
     ],
     description:
       "Fetch and search for comments & users from a youtube video",
+    date: "2025",
+  },
+  {
+    title: "Full Stack Blog App",
+    image: blog,
+    link: "https://github.com/EthanGreatorex/blogAPIProject",
+    technologies: [
+      { icon: FaReact },
+      { icon: FaCss3 },
+      { icon: FaHtml5 },
+    ],
+    description:
+      "Create accounts, make posts, comment on posts! Built with express, react and postgresql.",
     date: "2025",
   },
   {
