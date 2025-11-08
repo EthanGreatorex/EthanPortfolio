@@ -6,7 +6,7 @@ const timelineData = [
   {
     year: "2025",
     age: "18 Years old",
-    desc: "Going into the second year of my T-Level course alongside a work placement at Bloc Digital",
+    desc: "Going into the second year of my T-Level course alongside a work placement at Bloc Digital. Placed first in the category for use of data and AI in our digital solution at the EMIOT Challenge ",
   },
   {
     year: "2024",
