@@ -8,7 +8,8 @@ import {
   FaHtml5,
   FaFlask,
   FaSass,
-  FaFigma
+  FaFigma,
+  FaBootstrap
 } from "react-icons/fa";
 import CosmoAI from "../assets/cosmo-chat.png";
 import ReactMovieApp from "../assets/react-movie-app.png";
@@ -16,10 +17,11 @@ import ReactQuizApp from "../assets/react-quiz-app.png";
 import TerminalWebsite from "../assets/terminal-website.png";
 import EasyArticle from "../assets/easy-article.png";
 import SpaceGame from "../assets/space-game.png";
-import ReactPlanetApp from "../assets/planet-explorer.png"
-import youtube from "../assets/youtube.png"
-import blog from "../assets/blog.png"
-import smartroute from "../assets/smartroute2.png"
+import ReactPlanetApp from "../assets/planet-explorer.png";
+import youtube from "../assets/youtube.png";
+import blog from "../assets/blog.png";
+import smartroute from "../assets/smartroute2.png";
+import whereswally from "../assets/whereswally.png";
 import "../css/projects.css";
 
 const project_data = [
@@ -32,6 +34,18 @@ const project_data = [
     ],
     description:
       "EMIOT Challenge award winning design prototype for easier, smarter and more eco route planning.",
+    date: "2025",
+  },
+  {
+    title: "WheresWally",
+    image: whereswally,
+    link: "https://github.com/EthanGreatorex/WhereIsWally",
+    technologies: [
+      { icon: FaReact },
+      {icon: FaBootstrap},
+    ],
+    description:
+      "A fun where's Wally game with leaderboards! Built with React, Express & MongoDB.",
     date: "2025",
   },
   {
