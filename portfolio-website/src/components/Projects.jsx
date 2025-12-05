@@ -1,5 +1,5 @@
 import Project from "./Project.jsx";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaPython,
@@ -149,10 +149,17 @@ const project_data = [
   },
 ];
 
-function Projects() {
+function Projects({ scrollProgress }) {
+  const { total = 0, timelineLeftRatio = 0.6, timelineBottomRatio = 0.1, projectsRightRatio = 0.3 } = scrollProgress;
+  
+  const projectsRightStart = timelineLeftRatio + timelineBottomRatio;
+  const projectsRightProgress = total > projectsRightStart 
+    ? Math.min((total - projectsRightStart) / projectsRightRatio, 1) 
+    : 0;
+  
   return (
     <>
-      <div className="project-list">
+      <div className="project-list" style={{ "--scroll-progress": Math.max(0, Math.min(1, projectsRightProgress)) }}>
         <h2 className="project-list__title">My projects</h2>
         {project_data.map((project, index) => (
           <motion.div

@@ -3,7 +3,17 @@
   grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
   justify-items: center;
-  border-right: 2px solid var(--accent-color);
+  position: relative;
+}
+
+.project-list::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: calc(100% * var(--scroll-progress, 0));
+  background-color: var(--accent-color);
 }
 
 .project-list__title {

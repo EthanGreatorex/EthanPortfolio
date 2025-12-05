@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ProfilePicture from "../assets/pfp-2.jpeg";
 import "../css/hero.css";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import TechCarousel from "./TechCarousel";
 
 function Hero() {
   const [hasCopyEmail, setCopyEmail] = useState(false);
@@ -98,6 +99,7 @@ function Hero() {
               movies!
             </p>
           </div>
+          <TechCarousel />
         </div>
       </motion.div>
     </>

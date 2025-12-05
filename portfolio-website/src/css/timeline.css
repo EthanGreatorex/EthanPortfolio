@@ -4,11 +4,31 @@
     max-width: 1024px;
     width: 90%;
     margin: 0 auto;
-    
-    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% * var(--timeline-bottom-progress, 0));
+    height: 2px;
+    background-color: var(--accent-color);
 }
 
 .timeline__timeline-item{
     padding: 2rem 2rem 2rem;
-    border-left: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.timeline__timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: calc(100% * var(--item-progress, 0));
+    background-color: var(--accent-color);
 }
