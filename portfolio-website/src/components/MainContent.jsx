@@ -1,6 +1,7 @@
 import Hero from "./Hero";
 import TimeLine from "./TimeLine";
 import Projects from "./Projects";
+import Stars from "./Stars"
 import React, { useRef, useEffect, useState } from "react";
 import Scroll from "./Scroll";
 
@@ -32,9 +33,6 @@ function MainContent() {
             const projectsRect = projectsSection.getBoundingClientRect();
             
             const timelineStart = timelineRect.top + scrollY;
-            const timelineEnd = timelineRect.bottom + scrollY;
-            const projectsStart = projectsRect.top + scrollY;
-            const projectsEnd = projectsRect.bottom + scrollY;
             
             // Calculate actual path lengths
             const timelineLeftHeight = timelineRect.height;
@@ -82,6 +80,7 @@ function MainContent() {
 
     return (
         <div ref={containerRef}>
+            <Stars />
             <section id="home"><Hero></Hero></section>
             <section id="about" ref={timelineSectionRef}>
                 <TimeLine scrollProgress={scrollProgress} />

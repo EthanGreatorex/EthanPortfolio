@@ -15,12 +15,6 @@ function AppWrapper() {
 
   const [theme, setTheme] = useState("dark");
 
-  useEffect(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    setTheme(prefersDark ? "dark" : "light");
-  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
