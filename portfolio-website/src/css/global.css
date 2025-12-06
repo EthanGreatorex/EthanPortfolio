@@ -11,7 +11,7 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #121212;
+  --bg-color: #010101;
   --text-color: #f0f0f0;
   --secondary-bg-color: rgb(24, 24, 24);
   --third-bg-color: rgb(22, 22, 22);
