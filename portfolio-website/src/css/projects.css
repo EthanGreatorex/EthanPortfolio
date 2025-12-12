@@ -14,9 +14,6 @@
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
   padding: 0 1rem;
 }
