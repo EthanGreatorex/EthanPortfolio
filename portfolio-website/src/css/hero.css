@@ -1,86 +1,212 @@
-
-
-.hero-content{
+.hero-content {
     display: grid;
     grid-template-columns: 1fr;
-    margin-bottom: 50px;
-    max-width: 1024px;
-    margin-top: 50px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.hero__profile {
+    display: flex;
+    justify-content: center;
+    order: 1;
+    margin-bottom: -15rem;
 }
 
 .hero__profile-image {
-    width: 30vw;
-    min-width: 150px;
-    max-width: 350px;
-    height: auto;
+    width: clamp(120px, 40vw, 200px);
+    height: clamp(120px, 40vw, 200px);
+    max-width: 100%;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.847);
-    margin-left: 20px;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
 }
 
-.hero-about{
-    margin-left: 20px;
-    grid-column: 1;
-    grid-row: 1;
+@media (min-width: 480px) {
+    .hero__profile-image {
+        width: clamp(150px, 35vw, 200px);
+        height: clamp(150px, 35vw, 200px);
+        border-width: 4px;
+    }
 }
 
-.hero__profile{
-    margin-top: 50px;
-    margin-right: 25px;
-    grid-column: 2;
+.hero__profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: var(--card-shadow-hover);
 }
 
-.hero__link{
+.hero-about {
+    text-align: center;
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-about__title {
+    font-size: clamp(1.75rem, 6vw, 3.5rem);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.hero-about__name {
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background-clip: text;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.1;
+}
+
+.hero-about__occupation {
+    font-size: clamp(1rem, 3vw, 1.75rem);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    min-height: 2.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 0 0.5rem;
+}
+
+.hero__links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero__link {
     color: var(--accent-color);
-    text-decoration: none;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(40px, 8vw, 50px);
+    height: clamp(40px, 8vw, 50px);
+    background: var(--third-bg-color);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
 }
 
-.hero-hero__link:hover{
+.hero__link:hover {
     color: var(--text-color);
-    transition: all 0.3s ease;
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
 }
 
-.hero-hero__link:not(:hover){
-    transition: all 0.3s ease;
+.hero__link:active {
+    transform: translateY(0);
 }
 
-.copied-email{
-    font-size: 1.1rem;
+.copied-email {
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
-.hero-about__hobbies{
-    margin-top: 20px;
-    font-size: 1rem;
+.hero-about__hobbies {
+    margin-top: 1rem;
+    font-size: clamp(0.875rem, 2vw, 1.1rem);
     color: var(--text-color);
+    opacity: 0.8;
+    line-height: 1.1;
+    max-width: 100%;
+    padding: 0 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+    .hero-about__hobbies {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+}
+
+@media (min-width: 640px) {
+    .hero-content {
+        gap: 2.5rem;
+        max-width: var(--container-max-width);
+    }
+
+    .hero__profile-image {
+        width: clamp(180px, 25vw, 250px);
+        height: clamp(180px, 25vw, 250px);
+    }
 }
 
 @media (min-width: 768px) {
-    .hero-content{
+    .hero-content {
         grid-template-columns: 1fr 1fr;
-        margin-top: 100px;
+        gap: 3rem;
+        padding: 3rem 2rem;
     }
 
-    .hero-about{
-        grid-row: 1;
-        margin-top: 100px;
-        margin-left: 100px;
+    .hero__profile {
+        order: 2;
+        justify-content: flex-end;
+        margin-bottom: 0;
     }
 
-    .hero-about__title{
-        font-size: 2.5rem;
+    .hero__profile-image {
+        width: clamp(250px, 30vw, 280px);
+        height: clamp(250px, 30vw, 280px);
     }
 
-    .hero-about__name{
-        font-size: 2rem;
+    .hero-about {
+        text-align: left;
+        order: 1;
     }
 
-    .hero-about__occupation{
-        font-size: 1.5rem;
+    .hero__links {
+        justify-content: flex-start;
+        gap: 1.5rem;
     }
 
+}
+
+.hero-carousel {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .hero-carousel {
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-content {
+        gap: 4rem;
+        padding: 4rem 2rem;
+    }
+
+    .hero__profile-image {
+        width: clamp(280px, 25vw, 320px);
+        height: clamp(280px, 25vw, 320px);
+    }
 }

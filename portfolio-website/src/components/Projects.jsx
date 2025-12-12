@@ -159,15 +159,27 @@ function Projects({ scrollProgress }) {
   
   return (
     <>
-      <div className="project-list" style={{ "--scroll-progress": Math.max(0, Math.min(1, projectsRightProgress)) }}>
-        <h2 className="project-list__title">My projects</h2>
+      <div className="project-list">
+        <motion.h2 
+          className="project-list__title"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          My Projects
+        </motion.h2>
         {project_data.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
+            transition={{ 
+              duration: 0.6, 
+              ease: "easeOut",
+              delay: index * 0.1
+            }}
+            viewport={{ once: true, amount: 0.2 }}
             className="project-list__motion"
           >
             <Project

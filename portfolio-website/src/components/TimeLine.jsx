@@ -35,66 +35,63 @@ const timelineData = [
   },
 ];
 
-function TimelineItem({ item, index, scrollProgress, totalItems }) {
+function TimelineItem({ item, index, totalItems }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  // Calculate progress for this item - distribute scroll progress across all items
-  const itemStartProgress = index / totalItems;
-  const itemEndProgress = (index + 1) / totalItems;
-  
-  // Calculate how much of this item's border should be revealed
-  let itemProgress = 0;
-  if (scrollProgress >= itemStartProgress) {
-    const itemRange = itemEndProgress - itemStartProgress;
-    const scrolledInItem = scrollProgress - itemStartProgress;
-    itemProgress = Math.min(scrolledInItem / itemRange, 1);
-  }
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <motion.div
       ref={ref}
       key={index}
       className="timeline__timeline-item"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      style={{ "--item-progress": Math.max(0, Math.min(1, itemProgress)) }}
+      initial={{ opacity: 0, x: -50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+      transition={{ 
+        duration: 0.6, 
+        ease: "easeOut",
+        delay: index * 0.1
+      }}
     >
-      <p className="timeline-item__date">{item.year}</p>
-      <h1 className="timeline-item__title">{item.age}</h1>
-      <p className="timeline-item__description">{item.desc}</p>
+      <div className="timeline-item__content">
+        <p className="timeline-item__date">{item.year}</p>
+        <h3 className="timeline-item__title">{item.age}</h3>
+        <p className="timeline-item__description">{item.desc}</p>
+      </div>
     </motion.div>
   );
 }
 
 function TimeLine({ scrollProgress }) {
-  const { total = 0, timelineLeftRatio = 0.6, timelineBottomRatio = 0.1 } = scrollProgress;
+  const timelineRef = useRef(null);
+  const isInView = useInView(timelineRef, { once: true, amount: 0.1 });
+  const { total = 0, timelineLeftRatio = 0.6 } = scrollProgress;
   
-  const timelineLeftEnd = timelineLeftRatio;
-  const timelineBottomStart = timelineLeftEnd;
-  const timelineBottomEnd = timelineLeftEnd + timelineBottomRatio;
-  
-  // Calculate progress for each segment
-  const timelineLeftProgress = Math.min(total / timelineLeftEnd, 1);
-  const timelineBottomProgress = total > timelineBottomStart 
-    ? Math.min((total - timelineBottomStart) / timelineBottomRatio, 1) 
-    : 0;
+  const timelineProgress = Math.min(total / timelineLeftRatio, 1);
 
   return (
-    <div className="timeline" style={{ 
-      "--timeline-bottom-progress": Math.max(0, Math.min(1, timelineBottomProgress))
-    }}>
-      <h2>My Timeline</h2>
-      {timelineData.map((item, index) => (
-        <TimelineItem 
-          key={index} 
-          item={item} 
-          index={index} 
-          scrollProgress={Math.max(0, Math.min(1, timelineLeftProgress))}
-          totalItems={timelineData.length}
-        />
-      ))}
+    <div className="timeline" ref={timelineRef}>
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        My Timeline
+      </motion.h2>
+      <div className="timeline__container">
+        <div className="timeline__line"></div>
+        <div 
+          className="timeline__line-progress"
+          style={{ "--timeline-progress": Math.max(0, Math.min(1, timelineProgress)) }}
+        ></div>
+        {timelineData.map((item, index) => (
+          <TimelineItem 
+            key={index} 
+            item={item} 
+            index={index}
+            totalItems={timelineData.length}
+          />
+        ))}
+      </div>
     </div>
   );
 }

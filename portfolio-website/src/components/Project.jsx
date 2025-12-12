@@ -4,18 +4,17 @@ import { PropTypes } from "prop-types";
 
 function Projects({ title, image, description, link, technologies, date }) {
   return (
-    <div className="project" >
-      <img
-        className="project__image expand-on-hover"
-        src={image}
-        alt={`${title} project screenshot`}
-      />
+    <div className="project">
+      <div className="project__image-wrapper">
+        <img
+          className="project__image expand-on-hover"
+          src={image}
+          alt={`${title} project screenshot`}
+        />
+      </div>
       <div className="project-description">
         <h2 className="project-description__title">{title}</h2>
         <p className="project-description__overview">{description}</p>
-        <a href={link} target="_blank" className="project__link" rel="noreferrer">
-          View Project
-        </a>
         <div className="project__technologies">
           {technologies.map((tech, index) => {
             const Icon = tech.icon;
@@ -23,6 +22,9 @@ function Projects({ title, image, description, link, technologies, date }) {
           })}
         </div>
         <p className="project-description__date">{date}</p>
+        <a href={link} target="_blank" className="project__link" rel="noreferrer">
+          View Project →
+        </a>
       </div>
     </div>
   );

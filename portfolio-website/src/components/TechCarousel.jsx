@@ -14,20 +14,19 @@ export default function TechCarousel() {
     <FaWindows />
   ];
 
+  // Create multiple sets for seamless infinite loop
+  const totalSets = 3;
+
   return (
     <div className="carousel-wrapper">
       <div className="carousel-track">
-        {icons.map((icon, i) => (
-          <div key={i} className="carousel-item">
-            {icon}
-          </div>
-        ))}
-
-        {icons.map((icon, i) => (
-          <div key={`dup-${i}`} className="carousel-item">
-            {icon}
-          </div>
-        ))}
+        {Array.from({ length: totalSets }).map((_, setIndex) =>
+          icons.map((icon, i) => (
+            <div key={`set-${setIndex}-item-${i}`} className="carousel-item">
+              {icon}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

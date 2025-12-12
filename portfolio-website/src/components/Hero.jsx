@@ -18,22 +18,43 @@ function Hero() {
   return (
     <>
       <motion.div
-        animate={{ opacity: 1.5, y: 0 }}
-        initial={{ opacity: 0, y: -50 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="container"
+        style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}
       >
         <div className="hero-content">
-          <div className="hero__profile">
+          <motion.div 
+            className="hero__profile"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <img
               className="hero__profile-image expand-on-hover"
               src={ProfilePicture}
               alt="ethan taking selfie in London"
             />
-          </div>
+          </motion.div>
           <div className="hero-about">
-            <h1 className="hero-about__title">Hi,</h1>
-            <h3 className="hero-about__name">I&apos;m Ethan.</h3>
+            <motion.h1 
+              className="hero-about__title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Hi,
+            </motion.h1>
+            <motion.h3 
+              className="hero-about__name"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              I&apos;m Ethan.
+            </motion.h3>
             <motion.p
               className="hero-about__occupation"
               initial="initial"
@@ -41,7 +62,7 @@ function Hero() {
               variants={{
                 animate: {
                   transition: {
-                    staggerChildren: 0.1, // controls the wave speed
+                    staggerChildren: 0.05,
                     repeat: Infinity,
                     repeatType: "loop",
                     repeatDelay: 0.5,
@@ -53,9 +74,10 @@ function Hero() {
                 <motion.span
                   key={index}
                   variants={{
-                    initial: { color: "var(--base-animation-text)" },
+                    initial: { color: "var(--text-color)", opacity: 0.6 },
                     animate: {
                       color: "var(--accent-color)",
+                      opacity: 1,
                       transition: {
                         duration: 1.2,
                         repeat: Infinity,
@@ -71,36 +93,57 @@ function Hero() {
               ))}
             </motion.p>
 
-            <a
-              href="https://github.com/EthanGreatorex"
-              className="hero__link"
-              target="_blank"
-              rel="noreferrer"
+            <motion.div 
+              className="hero__links"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <FaGithub></FaGithub>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ethan-greatorex-240983327/"
-              target="_blank"
-              className="hero__link"
-              rel="noreferrer"
+              <a
+                href="https://github.com/EthanGreatorex"
+                className="hero__link"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+              >
+                <FaGithub></FaGithub>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ethan-greatorex-240983327/"
+                target="_blank"
+                className="hero__link"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin></FaLinkedin>
+              </a>
+              <button onClick={copyEmail} tabIndex={0} className="hero__link" aria-label="Copy Email">
+                {hasCopyEmail ? (
+                  <span className="copied-email">✓</span>
+                ) : (
+                  <FaEnvelope></FaEnvelope>
+                )}
+              </button>
+            </motion.div>
+            <motion.p 
+              className="hero-about__hobbies"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <FaLinkedin></FaLinkedin>
-            </a>
-            <button onClick={copyEmail} tabIndex={0} className="hero__link">
-              {hasCopyEmail ? (
-                <p className="copied-email">Copied!</p>
-              ) : (
-                <FaEnvelope></FaEnvelope>
-              )}
-            </button>
-            <p className="hero-about__hobbies">
               Besides web development, I enjoy music, running and watching
               movies!
-            </p>
+            </motion.p>
           </div>
-          <TechCarousel />
         </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="hero-carousel"
+        >
+          <TechCarousel />
+        </motion.div>
       </motion.div>
     </>
   );

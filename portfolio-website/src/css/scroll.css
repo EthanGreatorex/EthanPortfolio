@@ -1,26 +1,43 @@
-
-.scroll{
+.scroll {
     position: fixed;
-    width: 30px;
-    height: 30px;
-    bottom: 50px;
-    right: 45px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
 }
 
-.scroll__button{
-    text-align: center;
-    font-size: 2rem;
-    background-color:var(--accent-color);
-    border-radius: 50%;
+.scroll__button {
+    background: var(--accent-color);
     border: none;
-
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
 }
 
-.scroll__icon{
-    color: var(--text-color);
-    transition: all 0.3s ease;
+.scroll__button:hover {
+    background: var(--accent-color-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.scroll__icon {
+    color: var(--bg-color);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .scroll {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .scroll__button {
+        width: 45px;
+        height: 45px;
+    }
 }

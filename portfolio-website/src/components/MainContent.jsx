@@ -81,11 +81,13 @@ function MainContent() {
     return (
         <div ref={containerRef}>
             <Stars />
-            <section id="home"><Hero></Hero></section>
-            <section id="about" ref={timelineSectionRef}>
+            <section id="home" style={{ paddingTop: '100px', minHeight: '100vh' }}>
+                <Hero></Hero>
+            </section>
+            <section id="about" ref={timelineSectionRef} style={{ minHeight: '100vh' }}>
                 <TimeLine scrollProgress={scrollProgress} />
             </section>
-            <section id="projects" ref={projectsSectionRef}>
+            <section id="projects" ref={projectsSectionRef} style={{ minHeight: '100vh' }}>
                 <Projects scrollProgress={scrollProgress} />
             </section>
             <Scroll></Scroll>
