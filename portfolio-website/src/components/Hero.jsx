@@ -56,41 +56,12 @@ function Hero() {
               I&apos;m Ethan.
             </motion.h3>
             <motion.p
-              className="hero-about__occupation"
-              initial="initial"
-              animate="animate"
-              variants={{
-                animate: {
-                  transition: {
-                    staggerChildren: 0.05,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    repeatDelay: 0.5,
-                  },
-                },
-              }}
+              className="hero-about__occupation text-shadows"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              {"Student learning Web Dev".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={{
-                    initial: { color: "var(--text-color)", opacity: 0.6 },
-                    animate: {
-                      color: "var(--accent-color)",
-                      opacity: 1,
-                      transition: {
-                        duration: 1.2,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut",
-                      },
-                    },
-                  }}
-                  style={{ display: "inline-block" }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
+              Student learning Web Dev
             </motion.p>
 
             <motion.div 
@@ -131,7 +102,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              Besides web development, I enjoy music, running and watching
+              I've been passionate about Web development from a young age, I love been able to express what I love in a way other people can visually see and interactive with! <br></br><br></br> Besides Web development, I enjoy music, running and watching
               movies!
             </motion.p>
           </div>

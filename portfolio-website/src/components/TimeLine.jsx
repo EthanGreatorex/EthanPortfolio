@@ -11,7 +11,7 @@ const timelineData = [
   {
     year: "2024",
     age: "17 Years old",
-    desc: "Currently taking on a T-Level Digital Design, Production and Development course at Derby College",
+    desc: "Took on a T-Level Digital Design, Production and Development course at Derby College",
   },
   {
     year: "2022",
@@ -63,10 +63,58 @@ function TimelineItem({ item, index, totalItems }) {
 
 function TimeLine({ scrollProgress }) {
   const timelineRef = useRef(null);
+  const timelineContainerRef = useRef(null);
   const isInView = useInView(timelineRef, { once: true, amount: 0.1 });
-  const { total = 0, timelineLeftRatio = 0.6 } = scrollProgress;
+  const [localProgress, setLocalProgress] = useState(0);
   
-  const timelineProgress = Math.min(total / timelineLeftRatio, 1);
+  useEffect(() => {
+    const updateProgress = () => {
+      if (!timelineRef.current || !timelineContainerRef.current) return;
+      
+      const timelineRect = timelineRef.current.getBoundingClientRect();
+      const containerRect = timelineContainerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      
+      // Get the timeline section's position
+      const timelineTop = timelineRect.top + scrollY;
+      const timelineHeight = timelineRect.height;
+      const containerHeight = containerRect.height;
+      
+      // Calculate progress based on how far we've scrolled through the timeline
+      // Start when timeline enters viewport (at 20% from top)
+      const viewportTrigger = windowHeight * 0.2;
+      const scrollStart = timelineTop - viewportTrigger;
+      const currentScroll = scrollY + viewportTrigger;
+      
+      let progress = 0;
+      if (currentScroll > scrollStart) {
+        // Calculate how much of the timeline we've scrolled through
+        const scrolled = currentScroll - scrollStart;
+        // Use container height for more accurate progress
+        const totalDistance = containerHeight + (windowHeight * 0.6);
+        progress = Math.min(scrolled / totalDistance, 1);
+      }
+      
+      progress = Math.max(0, Math.min(1, progress));
+      setLocalProgress(progress);
+    };
+    
+    const handleScroll = () => {
+      requestAnimationFrame(updateProgress);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    updateProgress(); // Initial calculation
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+  
+  const timelineProgress = localProgress;
 
   return (
     <div className="timeline" ref={timelineRef}>
@@ -75,13 +123,15 @@ function TimeLine({ scrollProgress }) {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        My Timeline
+        <div class="typewriter">
+            <h2>Here's my Timeline.</h2>
+          </div>
       </motion.h2>
-      <div className="timeline__container">
+      <div className="timeline__container" ref={timelineContainerRef}>
         <div className="timeline__line"></div>
         <div 
           className="timeline__line-progress"
-          style={{ "--timeline-progress": Math.max(0, Math.min(1, timelineProgress)) }}
+          style={{ "--timeline-progress": timelineProgress }}
         ></div>
         {timelineData.map((item, index) => (
           <TimelineItem 

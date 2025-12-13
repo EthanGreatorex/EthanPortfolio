@@ -9,7 +9,7 @@ import {
   FaFlask,
   FaSass,
   FaFigma,
-  FaBootstrap
+  FaBootstrap,
 } from "react-icons/fa";
 import CosmoAI from "../assets/cosmo-chat.png";
 import ReactMovieApp from "../assets/react-movie-app.png";
@@ -29,9 +29,7 @@ const project_data = [
     title: "SmartRoute",
     image: smartroute,
     link: "https://pager-union-03256972.figma.site",
-    technologies: [
-      { icon: FaFigma },
-    ],
+    technologies: [{ icon: FaFigma }],
     description:
       "EMIOT Challenge award winning design prototype for easier, smarter and more eco route planning.",
     date: "2025",
@@ -40,10 +38,7 @@ const project_data = [
     title: "WheresWally",
     image: whereswally,
     link: "https://github.com/EthanGreatorex/WhereIsWally",
-    technologies: [
-      { icon: FaReact },
-      {icon: FaBootstrap},
-    ],
+    technologies: [{ icon: FaReact }, { icon: FaBootstrap }],
     description:
       "A fun where's Wally game with leaderboards! Built with React, Express & MongoDB.",
     date: "2025",
@@ -66,24 +61,15 @@ const project_data = [
     title: "Youtube Comment Search",
     image: youtube,
     link: "https://ethangreatorex.github.io/YouTubeCommentSearcher/",
-    technologies: [
-      { icon: FaReact },
-      { icon: FaCss3 },
-      { icon: FaHtml5 },
-    ],
-    description:
-      "Fetch and search for comments & users from a youtube video",
+    technologies: [{ icon: FaReact }, { icon: FaCss3 }, { icon: FaHtml5 }],
+    description: "Fetch and search for comments & users from a youtube video",
     date: "2025",
   },
   {
     title: "Full Stack Blog App",
     image: blog,
     link: "https://github.com/EthanGreatorex/blogAPIProject",
-    technologies: [
-      { icon: FaReact },
-      { icon: FaCss3 },
-      { icon: FaHtml5 },
-    ],
+    technologies: [{ icon: FaReact }, { icon: FaCss3 }, { icon: FaHtml5 }],
     description:
       "Create accounts, make posts, comment on posts! Built with express, react and postgresql.",
     date: "2025",
@@ -150,36 +136,45 @@ const project_data = [
 ];
 
 function Projects({ scrollProgress }) {
-  const { total = 0, timelineLeftRatio = 0.6, timelineBottomRatio = 0.1, projectsRightRatio = 0.3 } = scrollProgress;
-  
+  const {
+    total = 0,
+    timelineLeftRatio = 0.6,
+    timelineBottomRatio = 0.1,
+    projectsRightRatio = 0.3,
+  } = scrollProgress;
+
   const projectsRightStart = timelineLeftRatio + timelineBottomRatio;
-  const projectsRightProgress = total > projectsRightStart 
-    ? Math.min((total - projectsRightStart) / projectsRightRatio, 1) 
-    : 0;
-  
+  const projectsRightProgress =
+    total > projectsRightStart
+      ? Math.min((total - projectsRightStart) / projectsRightRatio, 1)
+      : 0;
+
+
   return (
     <>
       <div className="project-list">
-        <motion.h2 
+        <motion.h2
           className="project-list__title"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          My Projects
+          <div class="typewriter">
+            <h2>Check out my Projects.</h2>
+          </div>
         </motion.h2>
         {project_data.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6, 
+            transition={{
+              duration: 0.6,
               ease: "easeOut",
-              delay: index * 0.1
+              delay: index * 0.1,
             }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.01 }}
             className="project-list__motion"
           >
             <Project

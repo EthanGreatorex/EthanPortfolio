@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+.console-container {
+  font-family: Khula, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  text-align: center;
+  display: block;
+  color: var(--text-color);
+  font-weight: 800;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .console-container {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .console-container {
+    margin-bottom: 4rem;
+  }
+}
+
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
+}
+
+.console-underscore.hidden {
+  opacity: 0;
+}
+
