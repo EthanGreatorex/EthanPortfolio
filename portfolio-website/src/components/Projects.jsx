@@ -161,7 +161,7 @@ function Projects({ scrollProgress }) {
           viewport={{ once: true }}
         >
           <div class="typewriter">
-            <h2>Check out my Projects.</h2>
+            <h2>My Projects.</h2>
           </div>
         </motion.h2>
         {project_data.map((project, index) => (
