@@ -102,7 +102,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              I've been passionate about Web development from a young age, I love been able to express what I love in a way other people can visually see and interactive with! <br></br><br></br> Besides Web development, I enjoy music, running and watching
+              I've been passionate about Web development from a young age, I love being able to express what I love in a way other people can visually see and interactive with! <br></br><br></br> Besides Web development, I enjoy music, running and watching
               movies!
             </motion.p>
           </div>
