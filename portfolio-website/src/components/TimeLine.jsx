@@ -123,7 +123,7 @@ function TimeLine({ scrollProgress }) {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div class="typewriter">
+        <div className="typewriter">
             <h2>Here's my Timeline.</h2>
           </div>
       </motion.h2>

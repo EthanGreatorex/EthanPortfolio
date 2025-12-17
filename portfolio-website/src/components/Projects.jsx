@@ -22,9 +22,19 @@ import youtube from "../assets/youtube.png";
 import blog from "../assets/blog.png";
 import smartroute from "../assets/smartroute2.png";
 import whereswally from "../assets/whereswally.png";
+import chatty from "../assets/chatty.png"
 import "../css/projects.css";
 
 const project_data = [
+  {
+    title: "Chatty",
+    image: chatty,
+    link: "https://chatty-green-eight.vercel.app",
+    technologies: [{ icon: FaReact }],
+    description:
+      "A live chatting website! Create an account, and message other users.",
+    date: "2025",
+  },
   {
     title: "SmartRoute",
     image: smartroute,
@@ -160,7 +170,7 @@ function Projects({ scrollProgress }) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div class="typewriter">
+          <div className="typewriter">
             <h2>My Projects.</h2>
           </div>
         </motion.h2>
