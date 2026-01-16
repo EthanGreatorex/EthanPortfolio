@@ -29,7 +29,7 @@ const project_data = [
   {
     title: "Chatty",
     image: chatty,
-    link: "https://chatty-green-eight.vercel.app",
+    link: "https://github.com/EthanGreatorex/Chatty",
     technologies: [{ icon: FaReact }],
     description:
       "A live chatting website! Create an account, and message other users.",
