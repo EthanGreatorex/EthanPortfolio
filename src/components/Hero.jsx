@@ -1,6 +1,6 @@
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import "./Hero.css";
-
+import heroImage from '../../images/hero-image.jpeg';
 export default function Hero() {
   return (
     <section className="hero" aria-label="Introduction">
@@ -44,7 +44,7 @@ export default function Hero() {
       <div className="hero-visual">
         <div className="hero-pattern" aria-hidden />
         <div className="hero-illustration" aria-hidden>
-          <img src="images/hero-image.jpeg" alt="Hero Illustration" />
+          <img src={heroImage} alt="Hero Illustration" />
         </div>
       </div>
     </section>
