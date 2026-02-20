@@ -15,6 +15,7 @@ import smartrouteImg from '../../images/smartroute.png';
 import whereswallyImg from '../../images/whereswally.png';
 import cosmoAIImg from '../../images/cosmo-chat.png';
 import youtubeImg from '../../images/youtube.png';
+import papersync from '../../images/papersync.png'
 import blogImg from '../../images/blog.png';
 import reactMovieAppImg from '../../images/react-movie-app.png';
 import planetExplorerImg from '../../images/planet-explorer.png';
@@ -24,6 +25,15 @@ import terminalWebsiteImg from '../../images/terminal-website.png';
 import spaceGameImg from '../../images/space-game.png';
 
 const project_data = [
+  {
+    title: 'PaperSync',
+    image: papersync,
+    link: 'https://www.linkedin.com/posts/ethan-greatorex_i-recently-had-an-idea-for-an-ios-app-activity-7430564762469519360-LgKP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKMOZABfE_u3OuhJBwcvVcMTzdoHndGKq8',
+    technologies: [{ icon: FaReact }],
+    description:
+      'An IOS app that uses AI to scan physical documents for dates and events, and adds them to Apple Calendar.',
+    date: '2025',
+  },
   {
     title: 'Chatty',
     image: chattyImg,
