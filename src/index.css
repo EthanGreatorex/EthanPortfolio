@@ -27,6 +27,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -43,6 +47,14 @@ a:hover {
   color: var(--text-muted);
 }
 
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,9 +66,21 @@ button {
   transition: opacity 0.2s, border-color 0.2s;
 }
 
-button:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 2px;
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 section {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Header.css';
 
 const NAV_LINKS = [
@@ -9,6 +9,17 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
     <header className="header">
@@ -21,6 +32,7 @@ export default function Header() {
         className={`header-menu-btn ${menuOpen ? 'header-menu-btn--open' : ''}`}
         aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={menuOpen}
+        aria-controls="primary-navigation"
         onClick={() => setMenuOpen((o) => !o)}
       >
         <span className="header-menu-btn-line" />
@@ -28,7 +40,10 @@ export default function Header() {
         <span className="header-menu-btn-line" />
       </button>
 
-      <nav className={`header-nav ${menuOpen ? 'header-nav--open' : ''}`}>
+      <nav
+        id="primary-navigation"
+        className={`header-nav ${menuOpen ? 'header-nav--open' : ''}`}
+      >
         {NAV_LINKS.map(({ label, href, primary }) => (
           <a
             key={href}

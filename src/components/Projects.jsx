@@ -8,6 +8,8 @@ import {
   FaFlask,
   FaSass,
 } from 'react-icons/fa6';
+import { createElement } from 'react';
+import { motion } from 'framer-motion';
 import './Projects.css';
 
 import chattyImg from '../../images/chatty.png';
@@ -16,13 +18,14 @@ import whereswallyImg from '../../images/whereswally.png';
 import cosmoAIImg from '../../images/cosmo-chat.png';
 import youtubeImg from '../../images/youtube.png';
 import papersync from '../../images/papersync.png'
-import blogImg from '../../images/blog.png';
 import reactMovieAppImg from '../../images/react-movie-app.png';
-import planetExplorerImg from '../../images/planet-explorer.png';
-import reactQuizAppImg from '../../images/react-quiz-app.png';
 import easyArticleImg from '../../images/easy-article.png';
 import terminalWebsiteImg from '../../images/terminal-website.png';
 import spaceGameImg from '../../images/space-game.png';
+
+const MotionSection = motion.section;
+const MotionDiv = motion.div;
+const MotionArticle = motion.article;
 
 const project_data = [
   {
@@ -128,15 +131,39 @@ const project_data = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="projects">
+    <MotionSection
+      id="projects"
+      className="projects"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.55 }}
+    >
       <p className="section-label">Portfolio</p>
       <h2 className="section-title">Discover what I've created</h2>
       <p className="section-description" style={{ marginBottom: '2rem' }}>
         Each project can be viewed on my GitHub or live.
       </p>
-      <div className="projects-grid">
-        {project_data.map((project) => (
-          <article key={project.title + project.date} className="project-card">
+      <MotionDiv
+        className="projects-grid"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.08, delayChildren: 0.06 } },
+        }}
+      >
+        {project_data.map((project, index) => (
+          <MotionArticle
+            key={project.title + project.date}
+            className="project-card"
+            variants={{
+              hidden: { opacity: 0, y: 18 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.4, delay: index * 0.01 }}
+          >
             <a
               href={project.link}
               target="_blank"
@@ -155,17 +182,17 @@ export default function Projects() {
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <ul className="project-technologies">
-                  {project.technologies.map(({ icon: Icon }, i) => (
+                  {project.technologies.map((tech, i) => (
                     <li key={i} className="project-tech-icon" aria-hidden>
-                      <Icon />
+                      {createElement(tech.icon)}
                     </li>
                   ))}
                 </ul>
               </div>
             </a>
-          </article>
+          </MotionArticle>
         ))}
-      </div>
-    </section>
+      </MotionDiv>
+    </MotionSection>
   );
 }

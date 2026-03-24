@@ -1,6 +1,16 @@
-import './Timeline.css';
+import "./Timeline.css";
+import { FaCrown } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const MotionSection = motion.section;
+const MotionArticle = motion.article;
 
 const timelineData = [
+  {
+    year: "2026",
+    age: "19 Years old",
+    desc: "Employed @ Bloc Digital as a Web Developer",
+  },
   {
     year: "2025",
     age: "18 Years old",
@@ -33,26 +43,52 @@ const timelineData = [
   },
 ];
 
+const currentYear = new Date().getFullYear().toString();
+
 export default function Timeline() {
   return (
-    <section id="timeline" className="timeline">
+    <MotionSection
+      id="timeline"
+      className="timeline"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55 }}
+    >
       <p className="section-label">Timeline</p>
       <h2 className="section-title">Experience & milestones</h2>
-      <p className="section-description" style={{ marginBottom: '2rem' }}>
+      <p className="section-description" style={{ marginBottom: "2rem" }}>
         Key moments in my journey so far.
       </p>
       <div className="timeline-list">
         {timelineData.map((event, i) => (
-          <article key={event.year + i} className="timeline-item">
+          <MotionArticle
+            key={event.year + i}
+            className="timeline-item"
+            tabIndex={0}
+            aria-label={`${event.year}, ${event.age}. ${event.desc}`}
+            initial={{ opacity: 0, x: i % 2 === 0 ? 16 : -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.45, delay: i * 0.04 }}
+          >
             <div className="timeline-marker" aria-hidden />
+
             <div className="timeline-content">
-              <span className="timeline-year">{event.year}</span>
+              <span className="timeline-year">
+                {event.year}
+
+                {event.year === currentYear && (
+                  <FaCrown className="crown-icon" />
+                )}
+              </span>
+
               <p className="timeline-age">{event.age}</p>
               <p className="timeline-description">{event.desc}</p>
             </div>
-          </article>
+          </MotionArticle>
         ))}
       </div>
-    </section>
+    </MotionSection>
   );
 }

@@ -26,6 +26,12 @@
   padding-bottom: 0;
 }
 
+.timeline-item:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
 .timeline-marker {
   position: absolute;
   left: -1.5rem;
@@ -37,6 +43,21 @@
   background: var(--bg-elevated);
   border: 2px solid rgba(255, 255, 255, 0.4);
 }
+
+.crown-icon {
+  margin-left: 8px;
+  margin-bottom: 3px;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.crown-icon {
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(0 0 4px gold);
+}
+
+
 
 @media (min-width: 768px) {
   .timeline-marker {
