@@ -7,7 +7,9 @@ import {
   FaHtml5,
   FaFlask,
   FaSass,
+  FaNodeJs,
 } from 'react-icons/fa6';
+import { SiExpress, SiPrisma, SiPostgresql } from 'react-icons/si';
 import { createElement } from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
@@ -22,6 +24,7 @@ import reactMovieAppImg from '../../images/react-movie-app.png';
 import easyArticleImg from '../../images/easy-article.png';
 import terminalWebsiteImg from '../../images/terminal-website.png';
 import spaceGameImg from '../../images/space-game.png';
+import twitter from '../../images/twitter.png';
 
 const MotionSection = motion.section;
 const MotionDiv = motion.div;
@@ -29,13 +32,28 @@ const MotionArticle = motion.article;
 
 const project_data = [
   {
+    title: 'Twitter Clone',
+    image: twitter,
+    link: 'https://github.com/EthanGreatorex/TwitterClone',
+    technologies: [
+      { icon: FaReact },
+      { icon: FaNodeJs },
+      { icon: SiExpress },
+      { icon: SiPrisma },
+      { icon: SiPostgresql },
+    ],
+    description:
+      'A full stack Twitter clone built with React, Express & Prisma ORM.',
+    date: '2026',
+  },
+  {
     title: 'PaperSync',
     image: papersync,
     link: 'https://www.linkedin.com/posts/ethan-greatorex_i-recently-had-an-idea-for-an-ios-app-activity-7430564762469519360-LgKP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKMOZABfE_u3OuhJBwcvVcMTzdoHndGKq8',
     technologies: [{ icon: FaReact }],
     description:
       'An IOS app that uses AI to scan physical documents for dates and events, and adds them to Apple Calendar.',
-    date: '2025',
+    date: '2026',
   },
   {
     title: 'Chatty',
