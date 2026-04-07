@@ -187,6 +187,7 @@ export default function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               className="project-card-link"
+              tabIndex={0}
             >
               <div className="project-card-image-wrap">
                 <img

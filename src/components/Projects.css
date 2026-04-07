@@ -28,7 +28,13 @@
   background: var(--bg-elevated);
   overflow: hidden;
   position: relative;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, outline 0.25s ease, outline-offset 0.25s ease;
+}
+
+.project-card:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .project-card:hover {
@@ -131,4 +137,20 @@
   justify-content: center;
   font-size: 1.25rem;
   color: var(--text-muted);
+}
+
+.project-card-link {
+  transition: all 0.25s ease;
+}
+
+.project-card-link:focus-visible {
+  outline: none;
+}
+
+.project-card:has(.project-card-link:focus-visible) {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
