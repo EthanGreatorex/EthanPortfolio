@@ -9,7 +9,7 @@ const timelineData = [
   {
     year: "2026",
     age: "19 Years old",
-    desc: "Employed @ Bloc Digital as a Web Developer",
+    desc: "Employed @ Bloc Digital as a Web Developer. Achieved a Distinction in my T-Level Digital Design, Production & Development",
   },
   {
     year: "2025",
