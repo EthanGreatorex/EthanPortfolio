@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <MotionHeader
-      className={`header ${scrolled ? 'header--scrolled' : ''}`}
+      className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--menu-open' : ''}`}
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}

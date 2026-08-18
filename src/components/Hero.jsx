@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import heroImage from '../../images/black-bg-pfp.jpeg';
 import { Typewriter } from 'react-simple-typewriter';
@@ -22,17 +23,55 @@ const containerVariants = {
   },
 };
 
-const letterVariants = {
-  hidden: { opacity: 0, y: 40, rotateX: -90 },
+const letterVariants3d = {
+  hidden: { opacity: 0, y: 40, rotateX: -90, transformPerspective: 600 },
   visible: {
     opacity: 1,
     y: 0,
     rotateX: 0,
+    transformPerspective: 600,
     transition: { type: 'spring', stiffness: 200, damping: 18 },
   },
 };
 
+const letterVariantsSimple = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'tween', duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+function getIsTouchDevice() {
+  if (typeof window === 'undefined') return true;
+  return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+}
+
+function useTouchDevice() {
+  const [isTouch, setIsTouch] = useState(getIsTouchDevice);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+    const update = () => setIsTouch(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  return isTouch;
+}
+
 export default function Hero() {
+  const isTouch = useTouchDevice();
+  const letterVariants = isTouch ? letterVariantsSimple : letterVariants3d;
+  const spring = isTouch
+    ? { type: 'tween', duration: 0.55, ease: [0.16, 1, 0.3, 1] }
+    : { type: 'spring', stiffness: 180, damping: 20 };
+  const badgeSpring = isTouch
+    ? { type: 'tween', duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.8 }
+    : { type: 'spring', stiffness: 400, damping: 15, delay: 0.8 };
+
   return (
     <section className="hero" aria-label="Introduction">
       <div className="hero-content">
@@ -40,12 +79,13 @@ export default function Hero() {
           className="hero-visual"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: 'spring', stiffness: 180, damping: 20, delay: 0.1 }}
+          transition={{ ...spring, delay: 0.1 }}
         >
           <MotionDiv
             className="hero-avatar-ring"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            style={isTouch ? { willChange: 'transform' } : undefined}
           />
           <MotionImg
             src={heroImage}
@@ -58,7 +98,7 @@ export default function Hero() {
             className="hero-badge"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15, delay: 0.8 }}
+            transition={badgeSpring}
           >
             ✦
           </MotionSpan>

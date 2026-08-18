@@ -65,11 +65,22 @@
   letter-spacing: -0.04em;
   margin: 0 0 0.75rem;
   perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 767px) {
+  .hero-name {
+    font-size: clamp(1.75rem, 6.5vw, 2rem);
+    letter-spacing: -0.03em;
+  }
 }
 
 .hero-name-letter {
   display: inline-block;
   transform-origin: bottom center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .hero-title {
