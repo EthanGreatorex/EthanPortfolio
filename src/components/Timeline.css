@@ -1,106 +1,141 @@
-.timeline {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
 .timeline-list {
   position: relative;
-  padding-left: 1.5rem;
-  border-left: 2px solid var(--border);
-  margin-left: 0.25rem;
+  padding-left: 2rem;
 }
 
-@media (min-width: 768px) {
-  .timeline-list {
-    padding-left: 2rem;
-    margin-left: 0.5rem;
-  }
+.timeline-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+
+.timeline-track-fill {
+  width: 100%;
+  background: var(--accent);
+  border-radius: 1px;
+  transform-origin: top;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
+  transition: transform 0.3s var(--ease-spring);
 }
 
 .timeline-item:last-child {
   padding-bottom: 0;
 }
 
-.timeline-item:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 6px;
-  border-radius: 8px;
-}
-
-[data-theme='light'] .timeline-item:focus-visible {
-  outline-color: var(--text);
-}
-
 .timeline-marker {
   position: absolute;
-  left: -1.5rem;
-  top: 0.25rem;
-  width: 12px;
-  height: 12px;
-  margin-left: -7px;
+  left: -2rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  margin-left: -6px;
   border-radius: 50%;
-  background: var(--bg-elevated);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: var(--bg);
+  border: 2px solid var(--border-hover);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-[data-theme='light'] .timeline-marker {
-  border-color: rgba(26, 26, 26, 0.2);
+.timeline-item--current .timeline-marker {
+  border-color: var(--accent);
+  background: var(--accent);
 }
 
-.crown-icon {
-  margin-left: 8px;
-  margin-bottom: 3px;
-  color: rgb(255, 255, 255);
-  font-size: 0.9rem;
-  vertical-align: middle;
-}
-
-[data-theme='light'] .crown-icon {
-  color: rgb(26, 26, 26);
-}
-
-.crown-icon {
-  color: rgb(255, 255, 255);
-  filter: drop-shadow(0 0 4px gold);
-}
-
-
-
-@media (min-width: 768px) {
-  .timeline-marker {
-    left: -2rem;
-    margin-left: -7px;
-  }
+.timeline-marker-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
 }
 
 .timeline-content {
-  padding-left: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.timeline-item:hover .timeline-content,
+.timeline-item:focus-visible .timeline-content {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-item--current .timeline-content {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--accent-soft);
 }
 
 .timeline-year {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.15rem;
+}
+
+.timeline-item--current .timeline-year {
+  color: var(--accent);
+}
+
+.crown-icon {
+  color: var(--accent);
+  font-size: 0.85rem;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
 }
 
 .timeline-age {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-muted);
   margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .timeline-description {
   font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.65;
   margin: 0;
+}
+
+.timeline-item:focus-visible {
+  outline: none;
+}
+
+.timeline-item:focus-visible .timeline-content {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .timeline-list {
+    padding-left: 2.5rem;
+  }
+
+  .timeline-marker {
+    left: -2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-track-fill {
+    height: 100% !important;
+  }
 }

@@ -3,6 +3,8 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Timeline from './components/Timeline';
 import Projects from './components/Projects';
+import FloatingBackground from './components/FloatingBackground';
+import Contact from './components/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
@@ -10,17 +12,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="app">
-        <div className="starfield" aria-hidden>
-          <span className="stars stars--near" />
-          <span className="stars stars--far" />
-          <div className="shooting-stars">
-            <span className="shooting-star" />
-            <span className="shooting-star" />
-            <span className="shooting-star" />
-            <span className="shooting-star" />
-            <span className="shooting-star" />
-          </div>
-        </div>
+        <FloatingBackground />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -30,14 +22,11 @@ function App() {
           <Skills />
           <Timeline />
           <Projects />
-          <section id="contact" className="contact">
-            <p className="section-label">Contact</p>
-            <h2 className="section-title">Get in touch</h2>
-            <a href="mailto:eggreatorex@icloud.com" className="btn btn--primary">
-              Contact me
-            </a>
-          </section>
+          <Contact />
         </main>
+        <footer className="site-footer">
+          Built with curiosity &amp; <span>☕</span> — {new Date().getFullYear()}
+        </footer>
       </div>
     </ThemeProvider>
   );

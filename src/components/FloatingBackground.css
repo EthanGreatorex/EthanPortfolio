@@ -1,0 +1,40 @@
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  --orb-1: radial-gradient(circle, rgba(255, 94, 58, 0.18) 0%, transparent 70%);
+  --orb-2: radial-gradient(circle, rgba(255, 140, 90, 0.12) 0%, transparent 70%);
+  --orb-3: radial-gradient(circle, rgba(255, 200, 120, 0.08) 0%, transparent 70%);
+}
+
+[data-theme='light'] .floating-bg {
+  --orb-1: radial-gradient(circle, rgba(232, 74, 40, 0.14) 0%, transparent 70%);
+  --orb-2: radial-gradient(circle, rgba(255, 160, 100, 0.1) 0%, transparent 70%);
+  --orb-3: radial-gradient(circle, rgba(255, 200, 150, 0.08) 0%, transparent 70%);
+}
+
+.floating-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+  opacity: 0.5;
+}
+
+.floating-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-bg__orb {
+    animation: none !important;
+  }
+}
