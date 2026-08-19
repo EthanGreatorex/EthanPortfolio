@@ -246,6 +246,10 @@
   cursor: pointer;
   border-radius: 50%;
   margin-left: 0.5rem;
+
+  svg{
+    display: block;
+  }
 }
 
 .header-theme-btn:hover {
