@@ -25,7 +25,7 @@ function App() {
           <Contact />
         </main>
         <footer className="site-footer">
-          Built with curiosity &amp; <span>☕</span> — {new Date().getFullYear()}
+          Built with curiosity &amp; <span>☕</span> - {new Date().getFullYear()}
         </footer>
       </div>
     </ThemeProvider>
