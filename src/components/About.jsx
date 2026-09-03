@@ -1,4 +1,4 @@
-import './About.css';
+import "./About.css";
 
 export default function About() {
   return (
@@ -9,8 +9,8 @@ export default function About() {
         <div className="about-content">
           <p className="section-description">
             I'm a software engineer focused on building fast, accessible web
-            applications with React and Next.js. I care about clean architecture,
-            performance, and great user experience.
+            applications with React and Next.js. I care about clean
+            architecture, performance, and great user experience.
           </p>
           <p className="about-text">
             When I'm not coding, I enjoy contributing to open source, writing

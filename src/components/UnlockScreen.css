@@ -1,0 +1,158 @@
+body.unlock-active {
+  overflow: hidden;
+}
+
+.unlock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  touch-action: manipulation;
+}
+
+.unlock-screen-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, var(--accent-soft) 0%, transparent 55%),
+    radial-gradient(
+      circle at 20% 80%,
+      color-mix(in srgb, var(--accent) 8%, transparent) 0%,
+      transparent 45%
+    );
+  pointer-events: none;
+}
+
+.unlock-screen-tap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 220px;
+  padding: 2rem;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+}
+
+.unlock-screen-tap-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-hover);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent),
+    0 0 48px color-mix(in srgb, var(--accent) 12%, transparent);
+  animation: unlock-ring-pulse 2.4s ease-in-out infinite;
+}
+
+.unlock-screen-tap-ring::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--accent) 35%, transparent);
+  animation: unlock-ring-spin 12s linear infinite;
+}
+
+@keyframes unlock-ring-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes unlock-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.unlock-screen-tap-label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.unlock-screen-reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+.unlock-tick {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unlock-tick-burst {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.unlock-tick-burst--secondary {
+  border-width: 1px;
+  opacity: 0;
+}
+
+.unlock-tick-icon {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 28px var(--accent-glow));
+}
+
+.unlock-tick-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.unlock-tick-check {
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.unlock-screen-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+}
+
+.unlock-screen--success .unlock-screen-label,
+.unlock-screen--exiting .unlock-screen-label {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unlock-screen-tap-ring,
+  .unlock-screen-tap-ring::before {
+    animation: none;
+  }
+}

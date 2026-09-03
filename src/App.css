@@ -1,16 +1,18 @@
 .app {
-  position: relative;
   min-height: 100vh;
-  isolation: isolate;
+  background: var(--bg);
 }
-
 .site-footer {
-  text-align: center;
-  padding: 2rem 1.5rem 3rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: auto;
+  padding: 2rem clamp(1.25rem, 5vw, 4rem) 3rem;
+  color: var(--text-dim);
+  font: 0.68rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-
-.site-footer span {
+.site-footer span:first-child {
   color: var(--accent);
 }

@@ -1,59 +1,106 @@
 .contact {
-  position: relative;
-}
-
-.contact::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(600px, 80%);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-}
-
-.contact-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  padding-top: 1rem;
-}
-
-.contact-wave {
-  font-size: 3rem;
-  line-height: 1;
-  display: inline-block;
-  transform-origin: 70% 70%;
-  margin: 0.5rem 0;
-}
-
-.contact-email {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  font-weight: 600;
-  color: var(--text);
-  position: relative;
-}
-
-.contact-email::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 2px;
+  max-width: none;
   background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease-out);
+  color: #11110f;
+  padding-top: clamp(5rem, 10vw, 9rem);
+  padding-bottom: clamp(5rem, 10vw, 9rem);
 }
-
-.contact-email:hover::after {
-  transform: scaleX(1);
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
+  gap: clamp(3rem, 10vw, 10rem);
+  max-width: 1280px;
+  margin: auto;
 }
-
-.contact-email:hover {
+.contact .section-label {
+  color: #11110f;
+}
+.contact .section-title {
+  max-width: 38rem;
+  color: #11110f;
+  font-size: clamp(3rem, 7vw, 7.5rem);
+}
+.contact .section-description {
+  max-width: 25rem;
+  color: rgba(17, 17, 15, 0.72);
+  margin: 2rem 0 0;
+}
+.contact-panel {
+  align-self: end;
+  padding: 1.5rem;
+  border: 1px solid rgba(17, 17, 15, 0.32);
+}
+.contact-panel-heading,
+.contact-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(17, 17, 15, 0.68);
+  font: 0.65rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contact-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.contact-status i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #11110f;
+}
+.contact-email {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: clamp(3rem, 7vw, 6rem) 0 1.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(17, 17, 15, 0.6);
+  color: #11110f;
+  font: clamp(1.3rem, 3vw, 2.5rem) var(--font-body);
+}
+.contact-email b {
+  font: 400 1.5rem var(--font-display);
+}
+.contact .btn--primary {
+  background: #11110f;
   color: var(--accent);
+  border-color: #11110f;
+}
+.contact-panel-footer {
+  align-items: flex-start;
+  margin-top: clamp(3rem, 7vw, 6rem);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(17, 17, 15, 0.25);
+}
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.contact-socials a {
+  color: #11110f;
+  border-bottom: 1px solid rgba(17, 17, 15, 0.5);
+  transition: opacity 0.2s;
+}
+.contact-socials a:hover {
+  opacity: 0.6;
+}
+.contact-wave {
+  display: none;
+}
+@media (max-width: 760px) {
+  .contact-inner {
+    display: block;
+  }
+  .contact-panel {
+    margin-top: 3rem;
+  }
+  .contact-panel-heading,
+  .contact-panel-footer {
+    flex-wrap: wrap;
+  }
 }

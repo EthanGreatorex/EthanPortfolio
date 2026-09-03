@@ -1,5 +1,7 @@
 .timeline-list {
   position: relative;
+  max-width: 52rem;
+  margin-top: 3rem;
   padding-left: 2rem;
 }
 
@@ -10,20 +12,18 @@
   bottom: 0;
   width: 2px;
   background: var(--border);
-  border-radius: 1px;
 }
 
 .timeline-track-fill {
   width: 100%;
   background: var(--accent);
-  border-radius: 1px;
   transform-origin: top;
 }
 
 .timeline-item {
   position: relative;
   padding-bottom: 2.5rem;
-  transition: transform 0.3s var(--ease-spring);
+  transition: transform 0.3s var(--ease-out);
 }
 
 .timeline-item:last-child {
@@ -60,21 +60,22 @@
 
 .timeline-content {
   padding: 1rem 1.25rem;
-  background: var(--bg-card);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .timeline-item:hover .timeline-content,
 .timeline-item:focus-visible .timeline-content {
   border-color: var(--border-hover);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .timeline-item--current .timeline-content {
   border-color: color-mix(in srgb, var(--accent) 30%, transparent);
-  background: var(--accent-soft);
+  background: rgba(198, 255, 74, 0.08);
 }
 
 .timeline-year {

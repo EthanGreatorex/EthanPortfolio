@@ -1,203 +1,61 @@
-import { useEffect, useState } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import heroImage from '../../images/black-bg-pfp.jpeg';
-import { Typewriter } from 'react-simple-typewriter';
-import { motion } from 'framer-motion';
-import './Hero.css';
+import heroImage from "../../images/upscaled-space-bg.jpg";
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import "./Hero.css";
 
 const MotionDiv = motion.div;
 const MotionH1 = motion.h1;
-const MotionH2 = motion.h2;
 const MotionP = motion.p;
 const MotionImg = motion.img;
-const MotionSpan = motion.span;
 const MotionA = motion.a;
 
-const name = 'Ethan Greatorex';
-const nameLetters = name.split('');
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.04, delayChildren: 0.3 },
-  },
-};
-
-const letterVariants3d = {
-  hidden: { opacity: 0, y: 40, rotateX: -90, transformPerspective: 600 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transformPerspective: 600,
-    transition: { type: 'spring', stiffness: 200, damping: 18 },
-  },
-};
-
-const letterVariantsSimple = {
-  hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: 'tween', duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-function getIsTouchDevice() {
-  if (typeof window === 'undefined') return true;
-  return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-}
-
-function useTouchDevice() {
-  const [isTouch, setIsTouch] = useState(getIsTouchDevice);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(hover: none) and (pointer: coarse)');
-    const update = () => setIsTouch(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-
-  return isTouch;
-}
-
 export default function Hero() {
-  const isTouch = useTouchDevice();
-  const letterVariants = isTouch ? letterVariantsSimple : letterVariants3d;
-  const spring = isTouch
-    ? { type: 'tween', duration: 0.55, ease: [0.16, 1, 0.3, 1] }
-    : { type: 'spring', stiffness: 180, damping: 20 };
-  const badgeSpring = isTouch
-    ? { type: 'tween', duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.8 }
-    : { type: 'spring', stiffness: 400, damping: 15, delay: 0.8 };
-
   return (
     <section className="hero" aria-label="Introduction">
+      <div className="hero-backdrop">
+        <MotionImg
+          src={heroImage}
+          alt=""
+          className="hero-image"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </div>
+      <div className="hero-overlay" />
       <div className="hero-content">
-        <MotionDiv
-          className="hero-visual"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ ...spring, delay: 0.1 }}
-        >
-          <MotionDiv
-            className="hero-avatar-ring"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            style={isTouch ? { willChange: 'transform' } : undefined}
-          />
-          <MotionImg
-            src={heroImage}
-            alt="Ethan Greatorex"
-            className="hero-image"
-            whileHover={{ scale: 1.06, rotate: 3 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-          />
-          <MotionSpan
-            className="hero-badge"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={badgeSpring}
-          >
-            ✦
-          </MotionSpan>
-        </MotionDiv>
-
         <MotionP
-          className="hero-greeting"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          className="hero-kicker"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
         >
-          Hey, I'm
+          Web Dev @ Bloc Digital / UK
         </MotionP>
-
         <MotionH1
           className="hero-name"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          aria-label={name}
-        >
-          {nameLetters.map((char, i) => (
-            <MotionSpan
-              key={i}
-              className="hero-name-letter"
-              variants={letterVariants}
-              aria-hidden={char !== ' '}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </MotionSpan>
-          ))}
-        </MotionH1>
-
-        <MotionH2
-          className="hero-title"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          transition={{ delay: 0.45, duration: 0.8 }}
         >
-          <Typewriter
-            words={['Web Developer.', 'React Developer.']}
-            loop={0}
-            cursor
-            cursorStyle="|"
-            typeSpeed={65}
-            deleteSpeed={35}
-            delaySpeed={1800}
-          />
-        </MotionH2>
-
-        <MotionP
-          className="hero-subtitle"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.1 }}
-        >
-          @ Bloc Digital
-        </MotionP>
-
+          Ethan
+          <br />
+          <em>Greatorex</em>
+        </MotionH1>
         <MotionP
           className="hero-description"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ delay: 0.8 }}
         >
-          I've been passionate about web development from a young age, I love
-          expressing what I care about in ways people can see and interact with.
-          Besides coding, I enjoy watching movies and hanging out with friends .
+          19 year old web developer passionate about creating engaging digital
+          experiences.
         </MotionP>
-
         <MotionDiv
-          className="hero-actions"
-          initial={{ opacity: 0, y: 16 }}
+          className="hero-socials"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.35 }}
-        >
-          <MotionA
-            href="#contact"
-            className="btn btn--primary"
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Contact me
-          </MotionA>
-          <MotionA
-            href="#projects"
-            className="btn btn--outline"
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            View projects →
-          </MotionA>
-        </MotionDiv>
-
-        <MotionDiv
-          className="hero-social"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.5 }}
+          transition={{ delay: 0.9, duration: 0.5 }}
         >
           <MotionA
             href="https://github.com/EthanGreatorex"
@@ -205,11 +63,10 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="hero-social-link"
             aria-label="GitHub"
-            whileHover={{ y: -4, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.94 }}
           >
-            <FaGithub />
+            <FaGithub aria-hidden="true" />
           </MotionA>
           <MotionA
             href="https://www.linkedin.com/in/ethan-greatorex/"
@@ -217,29 +74,44 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="hero-social-link"
             aria-label="LinkedIn"
-            whileHover={{ y: -4, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.94 }}
           >
-            <FaLinkedin />
+            <FaLinkedin aria-hidden="true" />
           </MotionA>
         </MotionDiv>
-
         <MotionDiv
-          className="hero-scroll-hint"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          aria-hidden
+          className="hero-actions"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6 }}
         >
-          <MotionSpan
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+          <MotionA
+            href="#projects"
+            className="btn btn--primary"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
           >
-            ↓
-          </MotionSpan>
+            View my work <span aria-hidden>↗</span>
+          </MotionA>
+          <MotionA
+            href="#contact"
+            className="btn btn--outline"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Get in touch
+          </MotionA>
         </MotionDiv>
       </div>
+      <a
+        href="#projects"
+        className="hero-scroll-hint"
+        aria-label="Scroll to selected work"
+      >
+        <span>Scroll to explore</span>
+        <b>↓</b>
+      </a>
     </section>
   );
 }
