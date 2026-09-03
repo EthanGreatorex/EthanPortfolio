@@ -46,10 +46,17 @@
   display: none;
 }
 .header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   padding: 0.7rem 1rem;
   border: 1px solid var(--border);
   font-size: 0.72rem;
   transition: all 0.2s;
+}
+.header-cta svg {
+  display: block;
+  flex: none;
 }
 .header-cta:hover {
   color: #11110f;

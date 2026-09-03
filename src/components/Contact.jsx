@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import "./Contact.css";
 
 const MotionSection = motion.section;
-const MotionSpan = motion.span;
 const MotionA = motion.a;
 
 export default function Contact() {
@@ -42,7 +42,7 @@ export default function Contact() {
             whileHover={{ x: 5 }}
             whileTap={{ scale: 0.97 }}
           >
-            eggreatorex@icloud.com <b aria-hidden>↗</b>
+            eggreatorex@icloud.com <FaArrowUpRightFromSquare aria-hidden="true" />
           </MotionA>
           <MotionA
             href="mailto:eggreatorex@icloud.com"
@@ -50,7 +50,7 @@ export default function Contact() {
             whileHover={{ x: 5 }}
             whileTap={{ scale: 0.97 }}
           >
-            Send a message <span aria-hidden>↗</span>
+            Send a message <FaArrowUpRightFromSquare aria-hidden="true" />
           </MotionA>
           <div className="contact-panel-footer">
             <span>Find me online</span>
@@ -60,14 +60,14 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub ↗
+                GitHub <FaArrowUpRightFromSquare aria-hidden="true" />
               </a>
               <a
                 href="https://www.linkedin.com/in/ethan-greatorex/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn ↗
+                LinkedIn <FaArrowUpRightFromSquare aria-hidden="true" />
               </a>
             </div>
           </div>

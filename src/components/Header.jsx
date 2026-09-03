@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import "./Header.css";
 
 const MotionHeader = motion.header;
@@ -77,7 +78,7 @@ export default function Header() {
           className="header-cta"
           onClick={() => setMenuOpen(false)}
         >
-          Want to chat? <span aria-hidden>↗</span>
+          Want to chat? <FaArrowUpRightFromSquare aria-hidden="true" />
         </a>
       </nav>
 

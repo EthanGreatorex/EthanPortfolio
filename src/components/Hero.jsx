@@ -1,6 +1,6 @@
 import heroImage from "../../images/upscaled-space-bg.jpg";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaArrowDown, FaArrowUpRightFromSquare, FaGithub, FaLinkedin } from "react-icons/fa6";
 import "./Hero.css";
 
 const MotionDiv = motion.div;
@@ -92,7 +92,7 @@ export default function Hero() {
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
           >
-            View my work <span aria-hidden>↗</span>
+            View my work <FaArrowUpRightFromSquare aria-hidden="true" />
           </MotionA>
           <MotionA
             href="#contact"
@@ -110,7 +110,7 @@ export default function Hero() {
         aria-label="Scroll to selected work"
       >
         <span>Scroll to explore</span>
-        <b>↓</b>
+        <FaArrowDown aria-hidden="true" />
       </a>
     </section>
   );

@@ -85,6 +85,15 @@ section {
     color 0.3s,
     border-color 0.3s;
 }
+.btn svg,
+.hero-social-link svg,
+.hero-scroll-hint svg,
+.project-card-arrow svg,
+.contact-email svg,
+.contact-socials a svg {
+  display: block;
+  flex: none;
+}
 .btn--primary {
   background: var(--accent);
   border-color: var(--accent);

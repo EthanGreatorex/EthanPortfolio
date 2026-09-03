@@ -7,6 +7,7 @@ import {
   FaHtml5,
   FaFlask,
   FaNodeJs,
+  FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
 import { SiExpress, SiPrisma, SiPostgresql } from "react-icons/si";
 import { createElement, useRef } from "react";
@@ -197,7 +198,7 @@ function TiltCard({ project, index }) {
         <div className="project-card-image-wrap">
           <img src={project.image} alt="" className="project-card-image" />
           <span className="project-card-arrow" aria-hidden>
-            ↗
+            <FaArrowUpRightFromSquare />
           </span>
         </div>
         <div className="project-card-inner">
